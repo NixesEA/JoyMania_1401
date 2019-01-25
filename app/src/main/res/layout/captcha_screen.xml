@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_background">
+
+
+    <TextView
+        android:id="@+id/generated_captcha_tv"
+        android:text="1234"
+        android:textStyle="bold"
+        android:textSize="@dimen/generateCaptchaTextSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/user_captcha_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageButton
+        android:id="@+id/image_btn_captcha"
+        app:layout_constraintStart_toEndOf="@id/generated_captcha_tv"
+        app:layout_constraintTop_toTopOf="@id/generated_captcha_tv"
+        app:layout_constraintBottom_toBottomOf="@id/generated_captcha_tv"
+        android:src="@drawable/recaptcha_logo"
+        android:background="@color/transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/user_captcha_tv"
+        android:text="@string/default_captcha"
+        android:textSize="@dimen/typeCaptchaTextSize"
+        app:layout_constraintTop_toBottomOf="@id/generated_captcha_tv"
+        app:layout_constraintBottom_toTopOf="@id/check_box_not_robot"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:maxLength="8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageButton
+        android:id="@+id/delete_user_captcha"
+        app:layout_constraintStart_toEndOf="@id/user_captcha_tv"
+        app:layout_constraintTop_toTopOf="@id/user_captcha_tv"
+        app:layout_constraintBottom_toBottomOf="@id/user_captcha_tv"
+        android:paddingStart="18dp"
+        android:background="@color/transparent"
+        android:src="@drawable/ic_delete_letter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <CheckBox
+        android:id="@+id/check_box_not_robot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:text="not robot"
+        style="@style/MyCheckBoxStyle"
+        app:layout_constraintBottom_toTopOf="@id/btn_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="8dp"
+        android:paddingBottom="8dp"
+        android:src="@drawable/btn_1"
+        android:background="@color/transparent"
+        app:layout_constraintBottom_toBottomOf="@id/btn_2"
+        app:layout_constraintEnd_toStartOf="@id/btn_2" />
+
+    <ImageButton
+        android:id="@+id/btn_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:paddingBottom="8dp"
+        android:src="@drawable/btn_2"
+        app:layout_constraintBottom_toTopOf="@id/btn_5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:paddingStart="8dp"
+        android:paddingBottom="8dp"
+        android:src="@drawable/btn_3"
+        app:layout_constraintBottom_toBottomOf="@id/btn_2"
+        app:layout_constraintStart_toEndOf="@id/btn_2" />
+
+    <ImageButton
+        android:id="@+id/btn_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:paddingEnd="8dp"
+        android:paddingBottom="8dp"
+        android:src="@drawable/btn_4"
+        app:layout_constraintEnd_toStartOf="@id/btn_5"
+        app:layout_constraintTop_toBottomOf="@id/btn_1" />
+
+    <ImageButton
+        android:id="@+id/btn_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:paddingBottom="8dp"
+        android:src="@drawable/btn_5"
+        app:layout_constraintBottom_toTopOf="@id/btn_8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:paddingStart="8dp"
+        android:paddingBottom="8dp"
+        android:src="@drawable/btn_6"
+        app:layout_constraintStart_toEndOf="@id/btn_5"
+        app:layout_constraintTop_toBottomOf="@id/btn_3" />
+
+    <ImageButton
+        android:id="@+id/btn_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:paddingEnd="8dp"
+        android:paddingBottom="8dp"
+        android:src="@drawable/btn_7"
+        app:layout_constraintEnd_toStartOf="@id/btn_8"
+        app:layout_constraintTop_toBottomOf="@id/btn_4" />
+
+    <ImageButton
+        android:id="@+id/btn_8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:paddingBottom="8dp"
+        android:src="@drawable/btn_8"
+        app:layout_constraintBottom_toTopOf="@id/btn_0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:paddingStart="8dp"
+        android:paddingBottom="8dp"
+        android:src="@drawable/btn_9"
+        app:layout_constraintStart_toEndOf="@id/btn_8"
+        app:layout_constraintTop_toBottomOf="@id/btn_6" />
+
+    <ImageButton
+        android:id="@+id/btn_0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:paddingBottom="40dp"
+        android:src="@drawable/btn_0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

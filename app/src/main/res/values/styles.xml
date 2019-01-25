@@ -1,26 +1,28 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.AppCompat.Light.NoActionBar.Fullscreen" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <!--coloring checkbox-->
+        <item name="colorControlNormal">@color/rust</item>
+        <item name="colorControlActivated">@color/rust</item>
+
+        <!--create fullscreen mode-->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/white</item>
 
-        <dimen name="timerTextSize">16sp</dimen>
-        <dimen name="timerCountSize">40sp</dimen>
+    </style>
 
-        <dimen name="resultTextSize">32sp</dimen>
-        <dimen name="resultCountSize">103sp</dimen>
-
-        <dimen name="lvlTextSize">14sp</dimen>
-
-        <dimen name="hintTextSize">18sp</dimen>
-        <dimen name="checkBoxTextSize">19sp</dimen>
-
-        <dimen name="generateCaptchaTextSize">52sp</dimen>
-
-        <dimen name="typeCaptchaTextSize">32sp</dimen>
+    <style name="MyCheckBoxStyle" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:textColor">@color/white</item>
     </style>
 
 </resources>
