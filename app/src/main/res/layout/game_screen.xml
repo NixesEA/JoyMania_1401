@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/ic_background">
 
+    <ImageView
+        android:id="@+id/top_bar_gamescreen"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/top"
+        android:scaleType="fitXY"
+        android:background="@color/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 
     <ImageButton
         android:id="@+id/btn_1"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_bar_gamescreen"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_2"
+        app:layout_constraintBottom_toTopOf="@id/blocks_rv"
         android:src="@drawable/btn_1_light"
         android:background="@color/transparent"
         android:layout_width="wrap_content"
@@ -18,7 +31,7 @@
 
     <ImageButton
         android:id="@+id/btn_2"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_1"
         app:layout_constraintStart_toEndOf="@id/btn_1"
         app:layout_constraintEnd_toStartOf="@id/btn_3"
         android:src="@drawable/btn_2_light"
@@ -28,7 +41,7 @@
 
     <ImageButton
         android:id="@+id/btn_3"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_1"
         app:layout_constraintStart_toEndOf="@id/btn_2"
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/btn_3_light"
