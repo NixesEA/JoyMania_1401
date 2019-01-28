@@ -30,4 +30,13 @@
         android:name="ru.pushapp.joymania_1401.GameScreenFragment"
         android:label="game_screen"
         tools:layout="@layout/game_screen" />
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="ru.pushapp.joymania_1401.ResultFragment"
+        android:label="result_fragment"
+        tools:layout="@layout/result_fragment" >
+        <action
+            android:id="@+id/action_resultFragment_to_gameScreenFragment"
+            app:destination="@id/gameScreenFragment" />
+    </fragment>
 </navigation>
