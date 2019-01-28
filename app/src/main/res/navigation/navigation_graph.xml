@@ -23,8 +23,6 @@
         tools:layout="@layout/captcha_screen" >
         <action
             android:id="@+id/action_captchaScreenActivity_to_gameScreenFragment"
-            app:exitAnim="@anim/fragment_up_anim"
-            app:popExitAnim="@anim/fragment_down_anim"
             app:destination="@id/gameScreenFragment" />
     </fragment>
     <fragment
