@@ -3,7 +3,6 @@ package ru.pushapp.joymania_1401;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,6 @@ public class rvAdapter extends RecyclerView.Adapter<rvAdapter.rvAdapterHolder> {
 
     ImageView lastImageView;
 
-
     static ImageModel getSelectedItem(){
         if (currentAdapterPosition >= 0){
             return list_items.get(currentAdapterPosition);
@@ -26,9 +24,6 @@ public class rvAdapter extends RecyclerView.Adapter<rvAdapter.rvAdapterHolder> {
             return null;
         }
     }
-
-
-
 
     class rvAdapterHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -43,8 +38,6 @@ public class rvAdapter extends RecyclerView.Adapter<rvAdapter.rvAdapterHolder> {
         @Override
         public void onClick(View view) {
             currentAdapterPosition = getAdapterPosition();
-
-
 
 //            change current image
             if (list_items.get(currentAdapterPosition).getChecked()){

@@ -9,7 +9,7 @@
         android:id="@+id/startScreenFragment"
         android:name="ru.pushapp.joymania_1401.StartScreenFragment"
         android:label="start_screen"
-        tools:layout="@layout/start_screen" >
+        tools:layout="@layout/start_screen">
         <action
             android:id="@+id/action_startScreenFragment_to_captchaScreenActivity"
             app:destination="@id/captchaScreenActivity"
@@ -20,7 +20,7 @@
         android:id="@+id/captchaScreenActivity"
         android:name="ru.pushapp.joymania_1401.CaptchaScreenActivity"
         android:label="captcha_screeen"
-        tools:layout="@layout/captcha_screen" >
+        tools:layout="@layout/captcha_screen">
         <action
             android:id="@+id/action_captchaScreenActivity_to_gameScreenFragment"
             app:destination="@id/gameScreenFragment" />
@@ -29,14 +29,13 @@
         android:id="@+id/gameScreenFragment"
         android:name="ru.pushapp.joymania_1401.GameScreenFragment"
         android:label="game_screen"
-        tools:layout="@layout/game_screen" />
-    <fragment
-        android:id="@+id/resultFragment"
-        android:name="ru.pushapp.joymania_1401.ResultFragment"
-        android:label="result_fragment"
-        tools:layout="@layout/result_fragment" >
+
+        tools:layout="@layout/game_screen">
+
         <action
-            android:id="@+id/action_resultFragment_to_gameScreenFragment"
-            app:destination="@id/gameScreenFragment" />
+            android:id="@+id/action_global_startScreenFragment"
+            app:destination="@id/startScreenFragment" />
     </fragment>
+
+
 </navigation>

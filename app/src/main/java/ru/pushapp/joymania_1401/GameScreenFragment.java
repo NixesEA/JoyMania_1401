@@ -6,7 +6,6 @@ import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,7 +25,7 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Random;
 
-public class GameScreenFragment extends Fragment implements Chronometer.OnChronometerTickListener, View.OnClickListener {
+public class GameScreenFragment extends Fragment implements Chronometer.OnChronometerTickListener, View.OnClickListener, ResultFragment.OnResultListener {
 
     RecyclerView recyclerView;
     ArrayList<ImageModel> urlList = new ArrayList<>();
@@ -50,11 +49,10 @@ public class GameScreenFragment extends Fragment implements Chronometer.OnChrono
     TextView lvlTV;
 
     int countTick = 0;
-    int durationTimer = 10 * 1000;
+    static int durationTimer;
 
-
-    int[] si = new int[]{R.drawable.water_block_big,
-            R.drawable.fire_block_big,
+    int[] resArray = new int[]{R.drawable.fire_block_big,
+            R.drawable.water_block_big,
             R.drawable.sun_block_big,
             R.drawable.leaf_block_big,
             R.drawable.heart_block_big};
@@ -94,17 +92,15 @@ public class GameScreenFragment extends Fragment implements Chronometer.OnChrono
     @Override
     public void onStart() {
         super.onStart();
-//        показываем по 1 элементу созданную последовательность
-        showQuestionItem();
+        playAgain();
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-
+    //показываем сгенерированную последовательность
+    private void showQuestionItem() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
+        urlList.clear();
         urlList.add(new ImageModel(R.drawable.fire_block_big, R.drawable.fire_block_little));
         urlList.add(new ImageModel(R.drawable.water_block_big, R.drawable.water_block_little));
         urlList.add(new ImageModel(R.drawable.sun_block_big, R.drawable.sun_block_little));
@@ -113,11 +109,6 @@ public class GameScreenFragment extends Fragment implements Chronometer.OnChrono
 
         rvAdapter adapter = new rvAdapter(getContext(), urlList);
         recyclerView.setAdapter(adapter);
-
-    }
-
-    private void showQuestionItem() {
-        Log.i("TEST", "осталось " + durationTimer/1000);
 
         chronometer.stop();
         lvlTV.setText("LVL: " + lvlCount);
@@ -140,7 +131,7 @@ public class GameScreenFragment extends Fragment implements Chronometer.OnChrono
         new CountDownTimer(5000, 1000) {
             public void onTick(long millisUntilFinished) {
                 int indexSI = (int) gameSet.toArray()[countTick];
-                showItem.setImageResource(si[indexSI]);
+                showItem.setImageResource(resArray[indexSI]);
                 timer.setText(String.valueOf(millisUntilFinished / 1000));
                 countTick++;
             }
@@ -163,7 +154,7 @@ public class GameScreenFragment extends Fragment implements Chronometer.OnChrono
             chronometer.stop();
             showResult();
 
-            Toast.makeText(getContext(), "end game", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Время вышло", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -249,9 +240,9 @@ public class GameScreenFragment extends Fragment implements Chronometer.OnChrono
             durationTimer = (int) (0 - SystemClock.elapsedRealtime() + chronometer.getBase());
 
             showQuestionItem();
-            Toast.makeText(getContext(), "right", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Правильно!", Toast.LENGTH_SHORT).show();
         } else if (!(countZero > 0) && counter == 5) {
-            Toast.makeText(getContext(), "nope", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Допущена ошибка!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -283,11 +274,13 @@ public class GameScreenFragment extends Fragment implements Chronometer.OnChrono
     }
 
     private void showResult() {
+        durationTimer = (int) (0 - SystemClock.elapsedRealtime() + chronometer.getBase());
 
         ResultFragment resultFragment = new ResultFragment();
+        resultFragment.setOnResultListener(this);
 
         Bundle bundle = new Bundle();
-        bundle.putInt("lvl",lvlCount);
+        bundle.putInt("lvl", lvlCount - 1);
         resultFragment.setArguments(bundle);
 
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
@@ -303,5 +296,12 @@ public class GameScreenFragment extends Fragment implements Chronometer.OnChrono
     public void onDestroyView() {
         rvAdapter.currentAdapterPosition = -1;
         super.onDestroyView();
+    }
+
+    @Override
+    public void playAgain() {
+        lvlCount = 1;
+        durationTimer = 60 * 1000;
+        showQuestionItem();
     }
 }

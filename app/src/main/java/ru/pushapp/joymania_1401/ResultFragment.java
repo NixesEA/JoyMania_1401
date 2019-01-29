@@ -12,15 +12,25 @@ import android.widget.TextView;
 
 import androidx.navigation.Navigation;
 
-public class ResultFragment extends Fragment implements View.OnClickListener{
+public class ResultFragment extends Fragment implements View.OnClickListener {
 
     ImageButton playAgainBtn;
+    ImageButton closeBtn;
     TextView resultTV;
+
+    OnResultListener callback;
+
+    public void setOnResultListener(Fragment fragment) {
+        callback = (OnResultListener) fragment;
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.result_fragment, container, false);
+
+        closeBtn = view.findViewById(R.id.res_back_btn);
+        closeBtn.setOnClickListener(this);
 
         playAgainBtn = view.findViewById(R.id.play_again_btn);
         playAgainBtn.setOnClickListener(this);
@@ -35,7 +45,20 @@ public class ResultFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-        getActivity().onBackPressed();
-//        Navigation.findNavController(playAgainBtn).navigate(R.id.action_resultFragment_to_gameScreenFragment);
+
+        switch (view.getId()) {
+            case R.id.play_again_btn:
+                callback.playAgain();
+                getActivity().onBackPressed();
+                break;
+            case R.id.res_back_btn:
+                Navigation.findNavController(closeBtn).popBackStack();
+                break;
+        }
+
+    }
+
+    public interface OnResultListener {
+        void playAgain();
     }
 }

@@ -47,13 +47,6 @@ public class CaptchaScreenActivity extends Fragment implements View.OnClickListe
 
     int rand;
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        rand = new Random().nextInt(8999);
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -161,6 +154,7 @@ public class CaptchaScreenActivity extends Fragment implements View.OnClickListe
 
 
     private void generateCaptcha() {
+        rand = new Random().nextInt(8999);
         generatedCaptchaTV.setText(String.valueOf(rand + 1000));
     }
 
